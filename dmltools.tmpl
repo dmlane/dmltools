@@ -1,0 +1,19 @@
+class dmltools < Formula
+  include Language::Python::Virtualenv
+
+  desc "Collection of useful homegrown command-line tools"
+  homepage "https://github.com/dmlane/dmltools"
+  url "#URL#"
+  sha256 "#SHA256#"
+  license "MIT"
+
+  depends_on "python@3.11"
+
+  def install
+    virtualenv_install_with_resources
+  end
+
+  test do
+    system "#{bin}/dmltools", "--version"
+  end
+end
