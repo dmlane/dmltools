@@ -57,7 +57,7 @@ help:  ## List all commands
 	@printf "$(HELP_COLOR)%-20s$(NO_COLOR) %s\n" rc "Build and deploy a release-candidate file (DEFAULT)"
 	@printf "$(HELP_COLOR)%-20s$(NO_COLOR) %s\n" release "Build and deploy a release file"
 	@printf "$(HELP_COLOR)%-20s$(NO_COLOR) %s\n" test "Run pytest"
-	@printf "$(HELP_COLOR)%-20s$(NO_COLOR) %s\n" lint  "Run pylint against all python files"
+	@printf "$(HELP_COLOR)%-20s$(NO_COLOR) %s\n" check  "Run pylint against all python files"
 	@printf "$(HELP_COLOR)%-20s$(NO_COLOR) %s\n" clean "Cleanup environment and remove python venv"
 	@printf "$(HELP_COLOR)%-20s$(NO_COLOR) %s\n" setup "Create a clean virtualenv and setup"
 	@echo ""
@@ -83,8 +83,8 @@ clean:
 	@$(HELPER)/mk_setup_environment.sh -d
 	@printf "$(BOLD_COLOR)CLEAN finished  +++++++++++$(NO_COLOR)\n"
 
-.PHONY: lint
-lint:
+.PHONY: check
+check:
 	pylint $(PYTHON_FILES)
 
 # Generate include file
