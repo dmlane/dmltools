@@ -16,7 +16,7 @@ require_commands brew gsed
 [ $PROJECT_NAME ] || fail "Expected to find PROJECT_NAME from MAKE environment"
 
 WF=$(mktemp)
-highlight "Fetching python resources for $PROJECT_NAME
+highlight "Fetching python resources for ^$PROJECT_NAME^"
 brew update-python-resources -p $PROJECT_NAME >$WF
 if [ $? -ne 0 ] ; then
 	rm $WF

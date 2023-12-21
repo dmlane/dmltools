@@ -43,6 +43,7 @@ $(WORK_DIR)/%.bumpver: Makefile pyproject.toml $(PROJECT_NAME).tmpl $(PYTHON_FIL
 	@$(BUMPVER)
 	@-rm -r dist 2>/dev/null
 	@touch $@
+
 #------------------------------------------------------
 rc: BUMPVER = bumpver update -t rc --tag-num
 rc: CLEANUP = echo "$(HELP_COLOR)Skipping cleanup (will be done on release)$(NO_COLOR)"
@@ -86,6 +87,10 @@ clean:
 .PHONY: check
 check:
 	pylint $(PYTHON_FILES)
+
+$(PROJECT_NAME).tmpl: pyproject.toml
+	$(DISPLAY)
+	@$(HELPER)/mk_tmpl_includes.sh
 
 # Generate include file
 $(WORK_DIR)/.versions: pyproject.toml
