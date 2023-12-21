@@ -88,7 +88,7 @@ clean:
 check:
 	pylint $(PYTHON_FILES)
 
-$(PROJECT_NAME).tmpl: pyproject.toml
+$(PROJECT_NAME).tmpl: poetry.lock
 	$(DISPLAY)
 	@$(HELPER)/mk_tmpl_includes.sh
 
